@@ -1,7 +1,7 @@
 ## Overview
 
 CtrlBench-Rec is an evolutionary multi-agent
-framework with three modules: Initialization, Dynamic Interaction, and Collaborative Fusion. Operating as a closed-loop system, it iterates through initialization, policy alignment, and agent
+framework with three modules: Initialization, Dynamic Interaction, and Collaborative Fusion. Operating as a closed-loop system, it iterates through initialization, policy alignment, and agent
 fusion to accelerate group exploration and cultivate elite agents.
 The central objective is to transform novice agents into a refined
 set of high-capability super probes that serve as a standardized
@@ -86,18 +86,18 @@ We provide experiments using the SASRec recommendation model on the ML-1M datase
 ``` bash
 python ../runner/user_profile_initialize.py
 ```
-2. **Interaction & Fusion** :Update the entry point in epoch.py to call runner.epoch.sasrec_ml1m_merge, then run the script.
+2. **Interaction & Fusion** :Update the entry point in ***epoch.py*** to call ***runner.epoch.sasrec_ml1m_merge***, then run the script.
 ``` bash
 python ../runner/epoch.py
 ```
 **Phase II: Evolutionary Training**
 
-1. **Interaction & Behavior Acquisition** :Update the entry point in epoch.py to call runner.epoch.sasrec_ml1m_debate_epoch20, then run the script.
+1. **Interaction & Behavior Acquisition** :Update the entry point in ***epoch.py*** to call ***runner.epoch.sasrec_ml1m_debate_epoch20***, then run the script.
 ``` bash
 python ../runner/epoch.py
 ```
 
-2. **Systematic Evaluation** : Invoke runner.evaluation.compare_two_profile, modify the original and evaluation profile paths, and run evaluation.py for results.
+2. **Systematic Evaluation** : Invoke ***runner.evaluation.compare_two_profile***, modify the original and evaluation profile paths, and run ***evaluation.py*** for results.
 ``` bash
 python ../runner/evaluation.py
 ```
