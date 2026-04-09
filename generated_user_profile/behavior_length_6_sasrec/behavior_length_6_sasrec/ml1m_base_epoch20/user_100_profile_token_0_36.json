@@ -1,0 +1,9 @@
+{
+    "agent_count": 0,
+    "prompt_tokens": 0,
+    "completiton_tokens": 0,
+    "total_tokens": 0,
+    "avg_prompt_tokens": 0.0,
+    "avg_completiton_tokens": 0.0,
+    "avg_total_tokens": 0.0
+}

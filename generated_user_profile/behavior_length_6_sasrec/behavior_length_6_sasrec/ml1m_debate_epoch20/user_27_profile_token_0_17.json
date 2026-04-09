@@ -1,0 +1,9 @@
+{
+    "agent_count": 27,
+    "prompt_tokens": 62580,
+    "completiton_tokens": 0,
+    "total_tokens": 69866,
+    "avg_prompt_tokens": 2317.777777777778,
+    "avg_completiton_tokens": 0.0,
+    "avg_total_tokens": 2587.6296296296296
+}

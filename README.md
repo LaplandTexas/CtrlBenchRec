@@ -32,23 +32,10 @@ controllability assessments.
 **Phase II: Inference & Evaluation**
 1. **Interaction & Behavior Acquisition** :Execute multi-turn interactions with the Black-Box recommender to generate a profile-aligned behavioral stream for the Super Probes.
 2. **Systematic Evaluation**
-🛠️ 环境准备
-克隆项目
-
-安装依赖
-
-📊 数据说明
-本项目主要使用以下数据集：
-
-MovieLens 1M: 经典的电影推荐数据集。
-
-Amazon Toys & Games: 包含项目信息和用户购买记录。
-
-注意: 模型权重文件（如 twhin-bert-base）应放置在 rec_models/ 目录下，该目录已被 Git 忽略。
 
 ## 🚀 Quick Start
 
-#### Prerequisites
+### Prerequisites
 
 | Tool | Version | Description | Check Installation |
 |------|---------|-------------|-------------------|
@@ -85,4 +72,28 @@ $env:DEEPSEEK_API_KEY="your_api_key_here"; python ../runner/user_profile_initial
 You can also download this model from:https://huggingface.co/Twitter/twhin-bert-base;
 After downloading,place it in the "../rec_models/" directory.
 
+### Experiments
 
+We provide experiments using the SASRec recommendation model on the ML-1M dataset, centered around the Task 1 Target Content Discovery Analysis.
+
+**Phase I: Evolutionary Training**
+
+1. **Multi-Agent Initialization** :Initialize the agent metadata
+``` bash
+python ../runner/user_profile_initialize.py
+```
+2. **Interaction & Fusion** :Update the entry point in epoch.py to call runner.epoch.sasrec_ml1m_merge, then run the script.
+``` bash
+python ../runner/epoch.py
+```
+**Phase II: Evolutionary Training**
+
+1. **Interaction & Behavior Acquisition** :Update the entry point in epoch.py to call runner.epoch.sasrec_ml1m_debate_epoch20, then run the script.
+``` bash
+python ../runner/epoch.py
+```
+
+2. **Systematic Evaluation** : Invoke runner.evaluation.compare_two_profile, modify the original and evaluation profile paths, and run evaluation.py for results.
+``` bash
+python ../runner/evaluation.py
+```
