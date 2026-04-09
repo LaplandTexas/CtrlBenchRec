@@ -13,16 +13,20 @@ controllability assessments.
 
 ## Project Structure
 
-├── data/                    # ML1M/Amazon toys & games datasets,we have preprocessed Amazon dataset.
-├── models/                  # 序列推荐模型定义 (e.g., SASRec, BGE)
-├── rec_models/              # 非序列推荐模型 (e.g.,twhin-bert)
-├── generated_user_profile/  # 各阶段产生的用户画像
-├── runner/                  # 训练/推理/评估脚本 (e.g., epoch.py/evaluation.py)
-└── requirements.txt         # 依赖清单
+```text
+
+├── data/                        # Datasets (ML-1M, preprocessed Amazon Toys & Games)
+├── models/                      # Sequential recommendation model definitions (e.g., SASRec, BGE)
+├── rec_models/                  # Non-sequential recommendation models (e.g., twhin-bert-base)
+├── generated_user_profile/      # User profiles generated at different stages
+├── tool/                        # Data loaders and embedding processors
+├── runner/                      # Scripts for training, inference, and evaluation (e.g., epoch.py, evaluation.py)
+└── requirements.txt             # Project dependencies
+```
 
 ## Framework and workflow
 
-![FrameWork](../readme_images/framework.png)
+![FrameWork](readme_images/framework.png)
 
 **Phase I: Evolutionary Training**
 1. **Multi-Agent Initialization** :Extract static attributes and dynamic trajectories from raw datasets like ML1M.Instantiate agents with a profile expert, an LLM-based decision engine, and tool-calling modules.
