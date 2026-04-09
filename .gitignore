@@ -101,3 +101,4 @@ models/
 tmp
 /rec_models/twhin-bert-base/
 /data/rec_history.json
+/rec_models/Qwen3___5-2B/
