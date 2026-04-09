@@ -1,3 +1,37 @@
+## Overview
+
+CtrlBench-Rec is an evolutionary multi-agent
+framework with three modules: Initialization, Dynamic Interaction, and Collaborative Fusion. Operating as a closed-loop system, it iterates through initialization, policy alignment, and agent
+fusion to accelerate group exploration and cultivate elite agents.
+The central objective is to transform novice agents into a refined
+set of high-capability super probes that serve as a standardized
+benchmark for system controllability. The framework operates in
+two sequential phases: (1) Training phase, refining
+super probes through interaction and fusion; and (2) Inference
+and evaluation phase, deploying the probes for multi-dimensional
+controllability assessments.
+
+## Project Structure
+
+├── data/                    # ML1M/Amazon toys & games datasets,we have preprocessed Amazon dataset.
+├── models/                  # 序列推荐模型定义 (e.g., SASRec, BGE)
+├── rec_models/              # 非序列推荐模型 (e.g.,twhin-bert)
+├── generated_user_profile/  # 各阶段产生的用户画像
+├── runner/                  # 训练/推理/评估脚本 (e.g., epoch.py/evaluation.py)
+└── requirements.txt         # 依赖清单
+
+## Framework and workflow
+
+![FrameWork](../readme_images/framework.png)
+
+**Phase I: Evolutionary Training**
+1. **Multi-Agent Initialization** :Extract static attributes and dynamic trajectories from raw datasets like ML1M.Instantiate agents with a profile expert, an LLM-based decision engine, and tool-calling modules.
+2. **Environment Interaction & Behavior Alignment** :Synchronize the Black-Box system's state with the agent's persona by injecting a continuous stream of profile-aligned interaction behaviors.
+3. **Multi-Agent Strategy Fusion** :Group agents via K-means clustering to facilitate intra-cluster discussions, followed by a fusion expert integrating these records and profiles into new Super Probes.
+
+**Phase II: Inference & Evaluation**
+1. **Interaction & Behavior Acquisition** :Execute multi-turn interactions with the Black-Box recommender to generate a profile-aligned behavioral stream for the Super Probes.
+2. **Systematic Evaluation**
 🛠️ 环境准备
 克隆项目
 
@@ -12,17 +46,43 @@ Amazon Toys & Games: 包含项目信息和用户购买记录。
 
 注意: 模型权重文件（如 twhin-bert-base）应放置在 rec_models/ 目录下，该目录已被 Git 忽略。
 
-🚀 快速上手
-该项目环境python版本为3.10
+## 🚀 Quick Start
 
-1.终端运行以下命令进行环境配置：
-pip install -r requirements
+#### Prerequisites
 
-2.运行../runner/load_twhin_bert.py脚本，加载twhin-bert-base推荐模型
+| Tool | Version | Description | Check Installation |
+|------|---------|-------------|-------------------|
+| **Python** | 3.10    | Backend runtime | `python --version` |
 
-3.进入deepseek-api开放平台https://platform.deepseek.com/usage，获取您的api密钥
+### Installation & Setup
+1.**Environment Configuration**\
+Run the following command in your terminal to install the necessary dependencies:
+```bash
+pip install -r requirements.txt
+```
+2.**Load Bert Encoder**\
+Execute the script to load the twhin-bert-base model:
+```bash
+python ../runner/load_twhin_bert.py
+```
 
-4.可运行不同阶段的相应脚本，运行时配置环境变量为您所获取的密钥，如DEEPSEEK_API_KEY=xxxxx
-智能体初始化元信息构建阶段，可运行脚本../runner/user_profile_initialize.py。
-智能体与推荐系统交互/融合阶段，可运行脚本../runner/epoch.py,我们提供了在sasrec模型上进行交互/融合的可运行函数。
-评估阶段，可运行脚本../runner/evaluation.py,自行设置需要评估的profile。
+3.**Configuration (API Key)**\
+To use the DeepSeek LLM features, you need to provide your API key from https://platform.deepseek.com/api_keys. You can pass it as an environment variable at runtime without permanently modifying your system settings.
+
+For Linux / macOS / WSL
+Prefix your command with the variable:
+
+```bash
+DEEPSEEK_API_KEY="your_api_key_here" python ../runner/user_profile_initialize.py
+```
+
+For Windows (PowerShell)
+In PowerShell, variables must be set for the current session before running the script:
+
+```PowerShell
+$env:DEEPSEEK_API_KEY="your_api_key_here"; python ../runner/user_profile_initialize.py
+```
+You can also download this model from:https://huggingface.co/Twitter/twhin-bert-base;
+After downloading,place it in the "../rec_models/" directory.
+
+
